@@ -1,0 +1,19 @@
+---
+- name: Désactiver l'accès SSH root
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Modifier PermitRootLogin pour interdire l'accès root via SSH
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PermitRootLogin'
+        line: 'PermitRootLogin no'
+        state: present
+        backrefs: yes
+
+    - name: Redémarrer le service SSH pour appliquer la configuration
+      service:
+        name: ssh
+        state: restarted
+

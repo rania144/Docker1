@@ -1,0 +1,26 @@
+---
+- name: Installer et activer fail2ban et auditd
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Installer fail2ban et auditd
+      apt:
+        name:
+          - fail2ban
+          - auditd
+        state: present
+        update_cache: yes
+
+    - name: Activer et démarrer fail2ban
+      service:
+        name: fail2ban
+        state: started
+        enabled: yes
+
+    - name: Activer et démarrer auditd
+      service:
+        name: auditd
+        state: started
+        enabled: yes
+
