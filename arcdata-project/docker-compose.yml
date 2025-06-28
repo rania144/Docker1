@@ -2,14 +2,15 @@ version: '3.8'
 
 services:
   arcdata-site:
-    build: .
+    build: ./arcdata-site
     ports:
       - "8080:80"
 
   prometheus:
     image: prom/prometheus
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - /home/ubuntu/docker/arcdata-project/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /home/ubuntu/docker/arcdata-project/alert_rules.yml:/etc/prometheus/alert_rules.yml
     ports:
       - "9091:9090"
 
