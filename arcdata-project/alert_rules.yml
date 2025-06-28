@@ -1,0 +1,11 @@
+groups:
+  - name: instance-down
+    rules:
+      - alert: HTTP_Service_Down
+        expr: probe_success{job="blackbox", instance="http://arcdata-site:80"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service HTTP injoignable"
+          description: "L'URL http://arcdata-site:80 ne répond plus depuis plus de 30 secondes."
