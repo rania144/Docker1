@@ -43,7 +43,18 @@ Ce playbook configure le pare-feu **UFW** (Uncomplicated Firewall) pour autorise
 ### 5. Mise à jour des paquets sur tous les serveurs (update.yml)
 
 Ce playbook met à jour les serveurs en actualisant la liste des paquets disponibles (`update_cache: yes`) puis en lançant une mise à niveau complète des paquets installés (`upgrade: dist`). Cette maintenance régulière est essentielle pour la sécurité et la stabilité des serveurs.
+### 6.Explication du playbook de déploiement Docker pour Arcdata (deploy.yml)
 
+Ce playbook automatise le déploiement de la stack Docker pour le projet Arcdata sur tous les serveurs ciblés (`hosts: all`) avec les droits administrateur (`become: yes`).
+
+# Explication rapide du playbook de déploiement Docker
+
+- Crée le dossier du projet si besoin  
+- Copie les fichiers `docker-compose.yml` et `prometheus.yml` dans ce dossier  
+- Ajoute l’utilisateur `ubuntu` au groupe `docker`  
+- Lance la stack Docker Compose en arrière-plan dans le dossier projet  
+
+Ce playbook assure que la configuration nécessaire est en place et que la stack Docker fonctionne correctement sur la machine distante.
 
 Tous ces playbooks sont orchestrés par Ansible pour automatiser et standardiser les opérations, facilitant ainsi la gestion de l'infrastructure.
 
@@ -62,6 +73,11 @@ Les hôtes seront nommés par leur IP privée, mais Ansible se connectera via le
 
 ```bash
 ansible -i aws_ec2.yml all -m ping
+
+### Execution des playbooks
+```bash
+ansible-playbook -i aws_ec2.yml <nom_du_playbook>.yml
+
 
 
 
