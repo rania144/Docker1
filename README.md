@@ -47,7 +47,7 @@ Ce playbook met à jour les serveurs en actualisant la liste des paquets disponi
 
 Ce playbook automatise le déploiement de la stack Docker pour le projet Arcdata sur tous les serveurs ciblés (`hosts: all`) avec les droits administrateur (`become: yes`).
 
-# Explication rapide du playbook de déploiement Docker
+## Explication rapide du playbook de déploiement Docker
 
 - Crée le dossier du projet si besoin  
 - Copie les fichiers `docker-compose.yml` et `prometheus.yml` dans ce dossier  
