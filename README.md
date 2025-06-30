@@ -2,7 +2,7 @@
 ## Prérequis
 - **Ansible** : Installer Ansible sur votre machine bastion. [Documentation Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
-  # Configuration du plugin `aws_ec2`
+# Configuration du plugin `aws_ec2`
 
 Ce fichier permet à Ansible de récupérer automatiquement les instances EC2 en cours d’exécution dans la région `us-east-1`.  
 Les hôtes seront nommés par leur IP privée, mais Ansible se connectera via leur IP publique.
