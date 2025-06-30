@@ -2,6 +2,19 @@
 ## Prérequis
 - **Ansible** : Installer Ansible sur votre machine bastion. [Documentation Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
 
+  # Configuration du plugin `aws_ec2`
+
+Ce fichier permet à Ansible de récupérer automatiquement les instances EC2 en cours d’exécution dans la région `us-east-1`.  
+Les hôtes seront nommés par leur IP privée, mais Ansible se connectera via leur IP publique.
+
+---
+
+# Commande pour tester la connexion (ping) aux instances
+
+```bash
+ansible -i aws_ec2.yml all -m ping
+
+
 Ansible est un outil d'automatisation de la configuration, du déploiement et de la gestion des infrastructures.  
 Dans ce projet, Ansible est utilisé pour :
 
@@ -10,17 +23,10 @@ Dans ce projet, Ansible est utilisé pour :
 - **Configurer le monitoring** à l'aide de `monitoring.yml`
 - **Gérer les utilisateurs SSH** via `ssh-user.yml`
 - **Mettre à jour et maintenir** les serveurs avec `update.yml`
-- **Déployer sur AWS EC2** grâce au playbook `aws_ec2.yml`
 
 Tous ces playbooks sont orchestrés par Ansible pour automatiser et standardiser les opérations, facilitant ainsi la gestion de l'infrastructure.
 
----
 
-## 2. Installation d'Ansible 
 
-Pour installer Ansible, voici les commandes à exécuter dans un terminal Ubuntu :
 
-```bash
-sudo apt update
-sudo apt install ansible
-ansible --version
+
