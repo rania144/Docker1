@@ -15,11 +15,11 @@ Tous ces playbooks sont orchestrés par Ansible pour automatiser et standardiser
 
 ---
 
-## Comment installer Ansible ?
+## 2. Installation d'Ansible sur Ubuntu
 
-Ansible peut être installé facilement via `pip` (Python package manager) ou via le gestionnaire de paquets de votre système.
-
-### Installation avec pip (recommandée)
+Pour installer Ansible, voici les commandes à exécuter dans un terminal Ubuntu :
 
 ```bash
-pip install ansible
+sudo apt update
+sudo apt install ansible
+ansible --version
