@@ -12,11 +12,38 @@
 Ansible est un outil d'automatisation de la configuration, du déploiement et de la gestion des infrastructures.  
 Dans ce projet, Ansible est utilisé pour :
 
-- **Déployer** les applications et services via les playbooks YAML (`deploy.yml`, `docker.yml`)
-- **Gérer la sécurité** des machines avec des playbooks comme `security.yml`, `ufw.yml`
-- **Configurer le monitoring** à l'aide de `monitoring.yml`
-- **Gérer les utilisateurs SSH** via `ssh-user.yml`
-- **Mettre à jour et maintenir** les serveurs avec `update.yml`
+# Explications des playbooks
+
+---
+
+### 1. Playbook principal d’importation
+
+Ce playbook principal importe plusieurs autres playbooks qui couvrent différentes tâches d’administration système : mise à jour des serveurs (`update.yml`), gestion des utilisateurs SSH (`ssh-user.yml`), configuration du pare-feu UFW (`ufw.yml`), installation et gestion de Docker (`docker.yml`), et mise en place du monitoring (`monitoring.yml`). Cela permet d’organiser et d’exécuter toutes ces opérations dans un ordre structuré.
+
+---
+
+### 2. Installation et activation de fail2ban et auditd
+
+Ce playbook installe deux outils importants pour la sécurité : **fail2ban** (qui protège contre les tentatives d’intrusion en bloquant les adresses IP suspectes) et **auditd** (qui collecte des logs détaillés du système pour la surveillance et les audits). Après l’installation, il démarre et active ces services afin qu’ils fonctionnent automatiquement au démarrage du système.
+
+---
+
+### 3. Désactivation de l’accès SSH root
+
+Ce playbook renforce la sécurité SSH en modifiant la configuration pour interdire la connexion directe en tant que `root` via SSH. Il modifie le fichier `sshd_config` pour mettre `PermitRootLogin no`, puis redémarre le service SSH afin que ce changement soit pris en compte immédiatement.
+
+---
+
+### 4. Configuration du pare-feu UFW
+
+Ce playbook configure le pare-feu **UFW** (Uncomplicated Firewall) pour autoriser les connexions sur les ports essentiels : SSH (22), HTTP (80) et HTTPS (443). Après avoir ajouté ces règles, il active le pare-feu pour que la protection soit effective.
+
+---
+
+### 5. Mise à jour des paquets sur tous les serveurs
+
+Ce playbook met à jour les serveurs en actualisant la liste des paquets disponibles (`update_cache: yes`) puis en lançant une mise à niveau complète des paquets installés (`upgrade: dist`). Cette maintenance régulière est essentielle pour la sécurité et la stabilité des serveurs.
+
 
 Tous ces playbooks sont orchestrés par Ansible pour automatiser et standardiser les opérations, facilitant ainsi la gestion de l'infrastructure.
 
