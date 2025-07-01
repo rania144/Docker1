@@ -76,16 +76,17 @@ Les hôtes seront nommés par leur IP privée, mais Ansible se connectera via le
 
 ```bash
 ansible -i aws_ec2.yml all -m ping
+ ```
 
 ---
 ### Execution des playbooks
 ```bash
 ansible-playbook -i aws_ec2.yml <nom_du_playbook>.yml
+ ```
 
 ---
 
----
-### Résumé
+## Résumé
 Ansible automatise la gestion des serveurs pour le projet Arcdata en installant, configurant et sécurisant tout automatiquement. Plusieurs playbooks sont utilisés pour mettre à jour les serveurs, gérer les utilisateurs SSH, configurer le pare-feu, installer Docker, surveiller les services, et renforcer la sécurité. Le fichier aws_ec2.yml récupère les instances AWS actives, et on lance les playbooks avec la commande ansible-playbook. Cela rend l’administration des serveurs Arcdata plus simple, rapide et sécurisée.
 
 
