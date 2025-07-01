@@ -1,6 +1,9 @@
 # Utilisation d'Ansible dans le projet
 
 ## Prérequis
+- **Posséder un compte AWS**  
+- **Installer AWS-CLI** : Pour gérer vos ressources AWS via la ligne de commande, installez AWS CLI et configurez-le avec aws configure. Lors de la configuration, entrez votre AWS Access Key ID, AWS Secret Access Key que vous allez trouver dans Vous pouvez installer AWS CLI , puis le configurer avec vos identifiants AWS, disponibles dans la section "AWS details" de votre compte AW, la région et le format de sortie. Une fois configuré, vous pouvez l'utiliser pour gérer vos instances EC2.
+- - **Informations d'identification AWS** : Configurer les informations d'identification AWS dans `./aws/credentials` car elle sera utilisée par la suite avec Ansible.
 
 - **Ansible** : Installer Ansible sur votre machine bastion.  
   Documentation officielle : [https://docs.ansible.com/ansible/latest/installation_guide/index.html](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
