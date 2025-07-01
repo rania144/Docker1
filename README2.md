@@ -20,7 +20,7 @@ Ce fichier `docker-compose.yml` définit plusieurs services essentiels pour le p
 
 ---
 
-## Configuration Prometheus 
+## Configuration Prometheus (Prometheus.yml)
 
 - `global.scrape_interval` : Définit l’intervalle de collecte des métriques à 15 secondes.
 - `rule_files` : Charge les règles d’alerte définies dans `alert_rules.yml`.
@@ -92,10 +92,6 @@ Cette expression Prometheus vérifie si le site http://arcdata-site:80 surveill�
 
  ---
 
-** Contexte **
----
-Ansible automatise l'installation et la configuration de l'infrastructure pour le projet Arcdata, incluant la mise en place de Docker et des services de monitoring comme Prometheus et Grafana via des playbooks. Le fichier `docker-compose.yml` lance plusieurs conteneurs essentiels : le site Arcdata, Prometheus pour collecter les métriques, Grafana pour les visualiser, et Blackbox Exporter pour vérifier la disponibilité du site. Prometheus utilise des règles d’alerte, notamment pour détecter quand le site est inaccessible depuis plus de 30 secondes, ce qui permet de recevoir des notifications critiques et d'assurer la surveillance continue du service.
-
 
 # Explication du Dockerfile 
 
@@ -113,7 +109,7 @@ Ce Dockerfile construit l'image Docker pour le service **arcdata-site**, qui cor
 
 ---
 
-## Relation direct avec le  projet Arcdata
+## Résumer
 
 - Ce Dockerfile permet de créer une image personnalisée contenant le site web Arcdata.  
 - L’image générée est utilisée dans le fichier `docker-compose.yml` sous le service **arcdata-site**.  
@@ -122,6 +118,8 @@ Ce Dockerfile construit l'image Docker pour le service **arcdata-site**, qui cor
 - En particulier, Prometheus, via Blackbox Exporter, vérifie la disponibilité du site Arcdata pour détecter rapidement toute indisponibilité.
 
 Ainsi, ce Dockerfile est un élément clé qui permet de déployer le site web Arcdata dans une infrastructure Docker orchestrée et supervisée automatiquement grâce à Ansible et aux outils de monitoring.
+
+
 
 
 
