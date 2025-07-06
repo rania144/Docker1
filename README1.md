@@ -13,7 +13,7 @@
 ## À quoi sert Ansible dans ce projet ?
 
 Ansible est un outil d'automatisation de la configuration, du déploiement et de la gestion des infrastructures.  
-Dans ce projet, Ansible est utilisé pour :
+Dans ce projet.
 
 # Explications des playbooks
 
@@ -50,7 +50,7 @@ Ce playbook met à jour les serveurs en actualisant la liste des paquets disponi
 
 Ce playbook automatise le déploiement de la stack Docker pour le projet Arcdata sur tous les serveurs ciblés (`hosts: all`) avec les droits administrateur (`become: yes`).
 
-## Explication rapide du playbook de déploiement Docker
+## Explication  du playbook de déploiement Docker
 
 - Crée le dossier du projet si besoin  
 - Copie les fichiers `docker-compose.yml` et `prometheus.yml` dans ce dossier  
